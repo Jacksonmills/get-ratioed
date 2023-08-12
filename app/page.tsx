@@ -6,8 +6,7 @@ import TweetCard from './(components)/TweetCard';
 interface TweetResponse extends TweetType {}
 
 export default async function Home() {
-  // const tweet: TweetResponse | undefined = await getTweet('1690136127095934978').catch(() => undefined)
-  const tweet: TweetResponse | undefined = await getTweet('1690369809601683456').catch(() => undefined)
+  const tweet: TweetResponse | undefined = await getTweet('1690136127095934978').catch(() => undefined)
   
   if (!tweet || !tweet.quoted_tweet) return <div>Failed to load tweet</div>
 
