@@ -28,7 +28,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12 gap-6">
+    <main className="flex min-h-screen flex-col items-center justify-between p-6 md:p-12 gap-6">
       <div className='flex w-full'>
         <h1 className='font-black text-4xl mr-auto'>GET RATIOED</h1>
         <ThemeToggle />
