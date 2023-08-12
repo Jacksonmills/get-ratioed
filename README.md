@@ -1,3 +1,17 @@
+# Get Ratioed!
+Get Ratioed! is a tool that enables users to vividly visualize the ratio when a tweet is collectively ratioed on Twitter.
+
+## About The Project
+This Next.js project provides an engaging and interactive way for users to analyze Twitter ratios. Simply paste a tweet URL, and you will get an animated response along with a fun, downloadable playing card-like PNG to show off.
+
+## Tech Stack
+- Next.js 13.4.13
+- TypeScript 5.1.6
+- React 18.2.0
+- Tailwind CSS 3.3.3
+- Radix UI
+- Lucide React
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

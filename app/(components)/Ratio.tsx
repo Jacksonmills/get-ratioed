@@ -23,7 +23,7 @@ export default function Ratio({ ratio }: { ratio: number }) {
   }, [isAnimated, ratio, ratioNumber]);
 
   return (
-    <div className="text-xl font-bold text-green-500">
+    <div className="text-xl font-bold text-green-500 w-full">
       {ratioNumber}%
       <RatioBar ratio={ratioNumber} targetRatio={ratio} />
     </div>
@@ -36,7 +36,7 @@ const RatioBar = ({ ratio, targetRatio }: { ratio: number, targetRatio: number }
     targetRatio = 100;
   };
   
-  const shakeWhenFull = targetRatio === 100 && ratio === targetRatio ? 'animate-shake-once' : '';
+  const shakeWhenFull = targetRatio === 100 && ratio === targetRatio ? 'animate-shake' : '';
 
   return (
     <div className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull}`}>
