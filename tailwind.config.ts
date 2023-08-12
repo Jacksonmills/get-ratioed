@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -13,8 +13,17 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      animation: {
+        'shake-once': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) 1',
+      },
+      keyframes: {
+        shake: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        }
+      }
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
