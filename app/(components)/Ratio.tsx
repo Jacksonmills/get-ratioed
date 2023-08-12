@@ -3,43 +3,34 @@
 import { useEffect, useState } from "react";
 
 export default function Ratio({ ratio }: { ratio: number }) {
-  const [isAnimated, setIsAnimated] = useState(false);
   const [ratioNumber, setRatioNumber] = useState(0);
+  const scaledRatio = ratio > 100 ? 100 : ratio; // Ensuring that the ratio never exceeds 100
 
   useEffect(() => {
-    if (ratio > 0 && !isAnimated) {
-      setIsAnimated(true);
-    }
-    if (isAnimated) {
-      const interval = setInterval(() => {
-        if (ratioNumber < ratio) {
-          setRatioNumber(ratioNumber + 1);
-        } else {
-          clearInterval(interval);
-        }
-      }, 10);
-      return () => clearInterval(interval);
-    }
-  }, [isAnimated, ratio, ratioNumber]);
+    const interval = setInterval(() => {
+      if (ratioNumber < scaledRatio) {
+        setRatioNumber(ratioNumber + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  }, [scaledRatio, ratioNumber]);
 
   return (
-    <div className="text-xl font-bold text-green-500 w-full">
-      {ratioNumber}%
-      <RatioBar ratio={ratioNumber} targetRatio={ratio} />
+    <div className="text-xl font-bold w-full md:max-w-[800px]">
+      <div className="flex justify-between">
+        <span className="text-green-500">{ratioNumber}%</span>
+        <span className="text-red-500">{100 - ratioNumber}%</span>
+      </div>
+      <RatioBar ratio={ratioNumber} />
     </div>
   );
 }
 
-const RatioBar = ({ ratio, targetRatio }: { ratio: number, targetRatio: number }) => {
-  if (ratio > 100) {
-    ratio = 100;
-    targetRatio = 100;
-  };
-  
-  const shakeWhenFull = targetRatio === 100 && ratio === targetRatio ? 'animate-shake' : '';
-
+const RatioBar = ({ ratio }: { ratio: number }) => {
   return (
-    <div className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull}`}>
+    <div className="flex w-full h-2 rounded-full overflow-hidden">
       <span className="flex bg-green-500 h-2" style={{ width: `${ratio}%` }} />
       <span className="flex bg-red-500 h-2" style={{ width: `${100 - ratio}%` }} />
     </div>

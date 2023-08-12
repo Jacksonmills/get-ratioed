@@ -6,7 +6,8 @@ import TweetCard from './(components)/TweetCard';
 interface TweetResponse extends TweetType {}
 
 export default async function Home() {
-  const tweet: TweetResponse | undefined = await getTweet('1690136127095934978').catch(() => undefined)
+  // const tweet: TweetResponse | undefined = await getTweet('1690136127095934978').catch(() => undefined)
+  const tweet: TweetResponse | undefined = await getTweet('1690369809601683456').catch(() => undefined)
   
   if (!tweet || !tweet.quoted_tweet) return <div>Failed to load tweet</div>
 
@@ -28,15 +29,15 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12 gap-2">
+    <main className="flex min-h-screen flex-col items-center justify-between p-12 gap-6">
       <div className='flex w-full'>
         <h1 className='font-black text-4xl mr-auto'>GET RATIOED</h1>
         <ThemeToggle />
       </div>
-      <div className='flex w-full items-center gap-4'>
+      <div className='flex w-full items-center justify-center gap-4'>
         <Ratio ratio={ratio} />
       </div>
-      <div className='flex w-full gap-12 items-center justify-evenly'>
+      <div className='flex flex-col w-full gap-6 md:gap-12 items-center justify-center md:flex-row'>
         <TweetCard tweet={tweet} isWinner={isTweetWinner} />
         <div className='font-bold text-4xl'>
           VS
