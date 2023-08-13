@@ -44,7 +44,7 @@ export default function Ratio({
         <RatioDisplay a={likesA} b={likesB} />
         <span className={`${spaceGrotesk.className}`}>{opposingRatio}%</span>
       </div>
-      <RatioBar ratio={ratioNumber} targetRatio={ratio} />
+      <RatioBar ratio={ratioNumber} />
     </div>
   );
 }

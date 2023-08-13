@@ -1,10 +1,7 @@
 import { type Tweet as TweetType, getTweet } from 'react-tweet/api';
 import Ratio from './(components)/Ratio';
-import { ThemeToggle } from './(components)/ThemeToggle';
 import TweetCard from './(components)/TweetCard';
-import { Github } from 'lucide-react';
-import { Button } from './(components)/ui/button';
-import Link from 'next/link';
+
 import { Space_Grotesk } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });

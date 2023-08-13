@@ -1,10 +1,4 @@
-export default function RatioBar({
-  ratio,
-  targetRatio,
-}: {
-  ratio: number;
-  targetRatio: number;
-}) {
+export default function RatioBar({ ratio }: { ratio: number }) {
   const percentage = ratio > 100 ? 100 : ratio;
 
   const shakeWhenFull = ratio > 100 ? 'animate-shake-all-directions' : '';

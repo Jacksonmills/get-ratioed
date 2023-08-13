@@ -1,8 +1,4 @@
 import { type Tweet as TweetType, getTweet } from 'react-tweet/api';
-import { Github } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '../(components)/ui/button';
-import { ThemeToggle } from '../(components)/ThemeToggle';
 import Ratio from '../(components)/Ratio';
 import TweetCard from '../(components)/TweetCard';
 
