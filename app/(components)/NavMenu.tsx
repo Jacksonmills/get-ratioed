@@ -18,7 +18,7 @@ export function NavMenu() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Examples</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="w-[60vw]">
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
@@ -27,19 +27,19 @@ export function NavMenu() {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Get Ratioed!
+                      Ratioed!
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      {`"Get Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.`}
+                      {`"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.`}
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/reply" title="Reply Example">
-                An example reply ratio visualization.
+                When a reply tweet has more likes than the original tweet.
               </ListItem>
               <ListItem href="/quoted" title="Quoted Example">
-                An example of a quoted tweet ratio visualization.
+                When a tweet has more likes than the quoted tweet.
               </ListItem>
             </ul>
           </NavigationMenuContent>

@@ -36,7 +36,6 @@ export default function RootLayout({
                     className={`font-black text-xl md:text-4xl ${spaceGrotesk.className}`}
                   >
                     <Logo />
-                    atioed!
                   </h1>
                 </Link>
               </div>
