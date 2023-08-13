@@ -25,10 +25,11 @@ export default function Ratio({ ratio }: { ratio: number }) {
   }, [isAnimated, ratio, ratioNumber]);
 
   return (
-    <div className="text-xl font-bold text-green-500 w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
+    <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
       <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
         <span>{ratioNumber}%</span>
-        {ratioDisplay}
+        <span className="mx-auto">{ratioDisplay}</span>
+        <span>{100 - ratioNumber}%</span>
       </div>
       <RatioBar ratio={ratioNumber} targetRatio={ratio} />
     </div>
@@ -51,7 +52,7 @@ const RatioBar = ({
       className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull}`}
     >
       <span
-        className="flex bg-green-500 h-2"
+        className="flex bg-blue-500 h-2"
         style={{ width: `${percentage}%` }}
       />
       <span

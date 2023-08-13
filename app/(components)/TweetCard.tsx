@@ -7,9 +7,11 @@ import { Tweet as TweetType } from 'react-tweet/api';
 export default function TweetCard({
   tweet,
   isWinner,
+  isOpposing = false,
 }: {
   tweet: TweetType;
   isWinner: boolean;
+  isOpposing?: boolean;
 }) {
   const [count, setCount] = React.useState(0);
 
@@ -41,7 +43,7 @@ export default function TweetCard({
       >
         <span
           className={`font-bold text-xl md:text-4xl ${
-            isWinner ? 'text-green-500' : 'text-red-500'
+            !isOpposing ? 'text-blue-500' : 'text-red-500'
           }`}
         >
           {count}
