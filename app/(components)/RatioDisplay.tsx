@@ -1,11 +1,9 @@
 import React from 'react';
 
 const calculateReadableRatio = (a: number, b: number): string => {
-  // Divide both numbers by their sum and multiply by 100 to get a percentage representation
   const percentA = (a / (a + b)) * 100;
   const percentB = (b / (a + b)) * 100;
 
-  // Divide both percentages by the GCD of the two percentages
   const gcd = (num1: number, num2: number): number => {
     return num2 === 0 ? num1 : gcd(num2, num1 % num2);
   };
