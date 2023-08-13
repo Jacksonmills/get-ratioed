@@ -15,7 +15,7 @@ export default function RatioBar({ ratio }: { ratio: number }) {
         className="flex bg-red-500 h-2"
         style={{ width: `${101 - percentage}%` }}
       />
-      <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-[1px] bg-yellow-200" />
+      <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-[1px] bg-current" />
     </div>
   );
 }
