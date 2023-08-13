@@ -40,13 +40,13 @@ export default function Ratio({
   return (
     <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
       <div className="font-bold text-xl md:text-4xl flex w-full">
-        <span className={`tabular-nums ${spaceGrotesk.className}`}>
+        {/* <span className={`tabular-nums ${spaceGrotesk.className}`}>
           {ratioNumber}%
-        </span>
+        </span> */}
         <RatioDisplay a={likesA} b={likesB} />
-        <span className={`tabular-nums ${spaceGrotesk.className}`}>
+        {/* <span className={`tabular-nums ${spaceGrotesk.className}`}>
           {opposingRatio}%
-        </span>
+        </span> */}
       </div>
       <RatioBar ratio={ratioNumber} />
     </div>
