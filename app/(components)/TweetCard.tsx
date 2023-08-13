@@ -39,16 +39,16 @@ export default function TweetCard({
   return (
     <div className="flex flex-col items-center">
       <div
-        className={`${animate} dark:bg-slate-900 bg-slate-100 py-2 px-4 rounded-lg border border-slate-300 dark:border-slate-700`}
+        className={`${animate} dark:bg-slate-900 bg-slate-100 py-2 px-4 rounded-lg border border-slate-300 dark:border-slate-700 flex items-center gap-2`}
       >
+        ❤️{' '}
         <span
           className={`font-bold text-xl md:text-4xl ${
             !isOpposing ? 'text-blue-500' : 'text-red-500'
           }`}
         >
           {count}
-        </span>{' '}
-        likes
+        </span>
       </div>
       <div className="mb-[-24px] mt-[-12px] md:mt-none">
         <Tweet id={tweet.id_str} />

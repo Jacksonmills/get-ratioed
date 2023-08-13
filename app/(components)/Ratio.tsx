@@ -1,12 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import RatioBar from './RatioBar';
+import RatioDisplay from './RatioDisplay';
 
-export default function Ratio({ ratio }: { ratio: number }) {
+export default function Ratio({
+  likesA,
+  likesB,
+  ratio,
+}: {
+  likesA: number;
+  likesB: number;
+  ratio: number;
+}) {
   const [isAnimated, setIsAnimated] = useState(false);
   const [ratioNumber, setRatioNumber] = useState(0);
-
-  const ratioDisplay = ratio === 100 ? '1:1' : `1:${Math.round(100 / ratio)}`;
 
   const opposingRatio = 100 - ratioNumber <= 0 ? '0' : 100 - ratioNumber;
 
@@ -30,37 +38,10 @@ export default function Ratio({ ratio }: { ratio: number }) {
     <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
       <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
         <span>{ratioNumber}%</span>
-        <span className="mx-auto">{ratioDisplay}</span>
+        <RatioDisplay a={likesA} b={likesB} />
         <span>{opposingRatio}%</span>
       </div>
       <RatioBar ratio={ratioNumber} targetRatio={ratio} />
     </div>
   );
 }
-
-const RatioBar = ({
-  ratio,
-  targetRatio,
-}: {
-  ratio: number;
-  targetRatio: number;
-}) => {
-  const percentage = ratio > 100 ? 100 : ratio;
-
-  const shakeWhenFull = ratio > 100 ? 'animate-shake-all-directions' : '';
-
-  return (
-    <div
-      className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull}`}
-    >
-      <span
-        className="flex bg-blue-500 h-2"
-        style={{ width: `${percentage}%` }}
-      />
-      <span
-        className="flex bg-red-500 h-2"
-        style={{ width: `${101 - percentage}%` }}
-      />
-    </div>
-  );
-};
