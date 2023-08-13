@@ -44,7 +44,11 @@ export default async function QuotedPage() {
   return (
     <>
       <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
-        <Ratio ratio={ratio} />
+        <Ratio
+          ratio={ratio}
+          likesA={tweet.favorite_count}
+          likesB={quotedTweet.favorite_count}
+        />
       </div>
 
       <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center lg:flex-row">
