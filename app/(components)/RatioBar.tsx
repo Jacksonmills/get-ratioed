@@ -5,7 +5,7 @@ export default function RatioBar({ ratio }: { ratio: number }) {
 
   return (
     <div
-      className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull}`}
+      className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull} relative`}
     >
       <span
         className="flex bg-blue-500 h-2"
@@ -15,6 +15,7 @@ export default function RatioBar({ ratio }: { ratio: number }) {
         className="flex bg-red-500 h-2"
         style={{ width: `${101 - percentage}%` }}
       />
+      <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-1 bg-yellow-200" />
     </div>
   );
 }
