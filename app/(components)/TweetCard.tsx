@@ -1,8 +1,11 @@
 'use client';
 
+import { Space_Grotesk } from 'next/font/google';
 import React from 'react';
 import { Tweet } from 'react-tweet';
 import { Tweet as TweetType } from 'react-tweet/api';
+
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default function TweetCard({
   tweet,
@@ -43,7 +46,7 @@ export default function TweetCard({
       >
         ❤️{' '}
         <span
-          className={`font-bold text-xl md:text-4xl ${
+          className={`font-bold text-xl md:text-4xl ${spaceGrotesk.className} ${
             !isOpposing ? 'text-blue-500' : 'text-red-500'
           }`}
         >

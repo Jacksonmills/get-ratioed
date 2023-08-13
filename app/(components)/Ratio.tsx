@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 import RatioBar from './RatioBar';
 import RatioDisplay from './RatioDisplay';
+import { Space_Grotesk } from 'next/font/google';
+
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default function Ratio({
   likesA,
@@ -37,9 +40,9 @@ export default function Ratio({
   return (
     <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
       <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
-        <span>{ratioNumber}%</span>
+        <span className={`${spaceGrotesk.className}`}>{ratioNumber}%</span>
         <RatioDisplay a={likesA} b={likesB} />
-        <span>{opposingRatio}%</span>
+        <span className={`${spaceGrotesk.className}`}>{opposingRatio}%</span>
       </div>
       <RatioBar ratio={ratioNumber} targetRatio={ratio} />
     </div>

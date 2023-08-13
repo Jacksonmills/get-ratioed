@@ -1,4 +1,7 @@
+import { Space_Grotesk } from 'next/font/google';
 import React from 'react';
+
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 const calculateReadableRatio = (a: number, b: number): string => {
   const percentA = (a / (a + b)) * 100;
@@ -16,7 +19,9 @@ export default function RatioDisplay({ a, b }: { a: number; b: number }) {
   const ratio = calculateReadableRatio(a, b);
 
   return (
-    <div className="flex justify-center items-center gap-1">
+    <div
+      className={`flex justify-center items-center gap-1 ${spaceGrotesk.className}`}
+    >
       <span className="text-blue-500">{ratio.split(':')[0]}</span>
       <span>:</span>
       <span className="text-red-500">{ratio.split(':')[1]}</span>
