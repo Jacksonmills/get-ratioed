@@ -19,7 +19,7 @@ export default function Ratio({ ratio }: { ratio: number }) {
         } else {
           clearInterval(interval);
         }
-      }, 10);
+      }, 20);
       return () => clearInterval(interval);
     }
   }, [isAnimated, ratio, ratioNumber]);

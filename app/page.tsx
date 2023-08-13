@@ -57,7 +57,7 @@ export default async function Home() {
       </div>
       <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center md:flex-row">
         <TweetCard tweet={tweet} isWinner={isTweetWinner} />
-        <div className="bg-slate-900 py-2 px-4 rounded-lg">
+        <div className="dark:bg-slate-900 bg-slate-100 py-2 px-4 rounded-lg">
           <div className="font-bold text-4xl">VS</div>
         </div>
         <TweetCard tweet={quotedTweet} isWinner={!isTweetWinner} />
