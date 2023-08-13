@@ -8,7 +8,7 @@ export default function Ratio({ ratio }: { ratio: number }) {
 
   const ratioDisplay = ratio === 100 ? '1:1' : `1:${Math.round(100 / ratio)}`;
 
-  const opposingRatio = 100 - ratioNumber > 100 ? '100' : 100 - ratioNumber;
+  const opposingRatio = 100 - ratioNumber <= 0 ? '0' : 100 - ratioNumber;
 
   useEffect(() => {
     if (ratio > 0 && !isAnimated) {
