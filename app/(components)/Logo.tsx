@@ -8,7 +8,7 @@ export default function Logo() {
 
   return (
     <div className="flex gap-1 items-baseline">
-      <div className="md:w-[1.8rem] md:h-[1.8rem] w-[1rem] h-[1rem] relative top-[-6px] md:top-[-10px]">
+      <div className="md:w-[1.8rem] md:h-[1.8rem] w-[1.4rem] h-[1.4rem] relative top-[-6px] md:top-[-10px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 156.6 210"
