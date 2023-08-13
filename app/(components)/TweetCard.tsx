@@ -13,6 +13,8 @@ export default function TweetCard({
 }) {
   const [count, setCount] = React.useState(0);
 
+  const animate = count >= tweet.favorite_count ? 'animate-bounce' : '';
+
   React.useEffect(() => {
     const maxCount = tweet.favorite_count;
     const increment = Math.max(Math.floor(maxCount / 100), 1);
@@ -33,7 +35,9 @@ export default function TweetCard({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="dark:bg-slate-900 bg-slate-100 py-2 px-4 rounded-lg">
+      <div
+        className={`${animate} dark:bg-slate-900 bg-slate-100 py-2 px-4 rounded-lg border border-slate-300 dark:border-slate-700`}
+      >
         <span
           className={`font-bold text-xl md:text-4xl ${
             isWinner ? 'text-green-500' : 'text-red-500'

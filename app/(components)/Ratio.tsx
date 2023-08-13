@@ -25,7 +25,7 @@ export default function Ratio({ ratio }: { ratio: number }) {
   }, [isAnimated, ratio, ratioNumber]);
 
   return (
-    <div className="text-xl font-bold text-green-500 w-full md:max-w-[800px] flex items-center flex-col gap-2">
+    <div className="text-xl font-bold text-green-500 w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
       <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
         <span>{ratioNumber}%</span>
         {ratioDisplay}
