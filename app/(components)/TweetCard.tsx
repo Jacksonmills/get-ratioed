@@ -13,7 +13,8 @@ export default function TweetCard({
 }) {
   const [count, setCount] = React.useState(0);
 
-  const animate = count >= tweet.favorite_count ? 'animate-bounce' : '';
+  const animate =
+    count >= tweet.favorite_count && isWinner ? 'animate-bounce' : '';
 
   React.useEffect(() => {
     const maxCount = tweet.favorite_count;

@@ -1,12 +1,12 @@
 import { type Tweet as TweetType, getTweet } from 'react-tweet/api';
-import Ratio from './(components)/Ratio';
-import { ThemeToggle } from './(components)/ThemeToggle';
-import TweetCard from './(components)/TweetCard';
 import { Github } from 'lucide-react';
-import { Button } from './(components)/ui/button';
 import Link from 'next/link';
+import { Button } from '../(components)/ui/button';
+import { ThemeToggle } from '../(components)/ThemeToggle';
+import Ratio from '../(components)/Ratio';
+import TweetCard from '../(components)/TweetCard';
 
-export default async function Home() {
+export default async function QuotedPage() {
   const tweet: TweetType | undefined = await getTweet(
     '1690136127095934978'
   ).catch(() => undefined);
