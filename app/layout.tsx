@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from './(components)/ThemeProvider';
 import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
@@ -8,13 +8,15 @@ import { Button } from './(components)/ui/button';
 import { Github } from 'lucide-react';
 import { ThemeToggle } from './(components)/ThemeToggle';
 import { NavMenu } from './(components)/NavMenu';
+import Logo from './(components)/Logo';
 
 const inter = Inter({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Get Ratioed!',
+  title: 'Ratioed!',
   description:
-    '"Get Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.',
+    '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.',
 };
 
 export default function RootLayout({
@@ -30,8 +32,11 @@ export default function RootLayout({
             <div className="flex w-full gap-4 items-center">
               <div className="mr-auto">
                 <Link href="/">
-                  <h1 className="font-black text-xl md:text-4xl">
-                    Get Ratioed!
+                  <h1
+                    className={`font-black text-xl md:text-4xl ${spaceGrotesk.className}`}
+                  >
+                    <Logo />
+                    atioed!
                   </h1>
                 </Link>
               </div>
