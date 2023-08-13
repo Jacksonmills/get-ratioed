@@ -20,11 +20,11 @@ export default function RatioDisplay({ a, b }: { a: number; b: number }) {
 
   return (
     <div
-      className={`flex justify-center items-center gap-1 ${spaceGrotesk.className}`}
+      className={`flex mx-auto justify-center items-center gap-1 ${spaceGrotesk.className}`}
     >
-      <span className="text-blue-500">{ratio.split(':')[0]}</span>
+      <span className="tabular-nums text-blue-500">{ratio.split(':')[0]}</span>
       <span>:</span>
-      <span className="text-red-500">{ratio.split(':')[1]}</span>
+      <span className="tabular-nums text-red-500">{ratio.split(':')[1]}</span>
     </div>
   );
 }

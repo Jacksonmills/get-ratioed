@@ -32,17 +32,21 @@ export default function Ratio({
         } else {
           clearInterval(interval);
         }
-      }, 20);
+      }, 30);
       return () => clearInterval(interval);
     }
   }, [isAnimated, ratio, ratioNumber]);
 
   return (
     <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
-      <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
-        <span className={`${spaceGrotesk.className}`}>{ratioNumber}%</span>
+      <div className="font-bold text-xl md:text-4xl flex w-full">
+        <span className={`tabular-nums ${spaceGrotesk.className}`}>
+          {ratioNumber}%
+        </span>
         <RatioDisplay a={likesA} b={likesB} />
-        <span className={`${spaceGrotesk.className}`}>{opposingRatio}%</span>
+        <span className={`tabular-nums ${spaceGrotesk.className}`}>
+          {opposingRatio}%
+        </span>
       </div>
       <RatioBar ratio={ratioNumber} />
     </div>

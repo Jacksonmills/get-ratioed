@@ -23,7 +23,7 @@ export default function TweetCard({
 
   React.useEffect(() => {
     const maxCount = tweet.favorite_count;
-    const increment = Math.max(Math.floor(maxCount / 100), 1);
+    const increment = Math.max(Math.floor(maxCount / 250), 1);
     const intervalTime = 30;
 
     if (count < maxCount) {
@@ -46,9 +46,9 @@ export default function TweetCard({
       >
         ❤️{' '}
         <span
-          className={`font-bold text-xl md:text-4xl ${spaceGrotesk.className} ${
-            !isOpposing ? 'text-blue-500' : 'text-red-500'
-          }`}
+          className={`tabular-nums transition-all duration-200 ease-in-out font-bold text-xl md:text-4xl ${
+            spaceGrotesk.className
+          } ${!isOpposing ? 'text-blue-500' : 'text-red-500'}`}
         >
           {count}
         </span>
