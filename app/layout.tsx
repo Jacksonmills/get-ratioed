@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Ratioed!',
   description:
-    '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.',
+    '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent xQc vs. H3H3 drama.',
 };
 
 export default function RootLayout({

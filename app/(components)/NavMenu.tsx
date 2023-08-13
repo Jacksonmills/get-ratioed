@@ -10,15 +10,17 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from './ui/navigation-menu';
+import Link from 'next/link';
 
 export function NavMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Examples</NavigationMenuTrigger>
-          <NavigationMenuContent className="w-[60vw]">
+          <NavigationMenuTrigger>Explore</NavigationMenuTrigger>
+          <NavigationMenuContent className="w-[80vw]">
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
@@ -27,10 +29,10 @@ export function NavMenu() {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Ratioed!
+                      Coming Soon: Make your own!
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      {`"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent XqC vs. H3H3 drama.`}
+                      Create your own custom tweet comparison.
                     </p>
                   </a>
                 </NavigationMenuLink>
