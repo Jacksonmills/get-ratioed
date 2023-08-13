@@ -8,6 +8,8 @@ export default function Ratio({ ratio }: { ratio: number }) {
 
   const ratioDisplay = ratio === 100 ? '1:1' : `1:${Math.round(100 / ratio)}`;
 
+  const opposingRatio = 100 - ratioNumber <= 0 ? '0' : 100 - ratioNumber;
+
   useEffect(() => {
     if (ratio > 0 && !isAnimated) {
       setIsAnimated(true);
@@ -29,7 +31,7 @@ export default function Ratio({ ratio }: { ratio: number }) {
       <div className="font-bold text-xl md:text-4xl flex justify-between w-full">
         <span>{ratioNumber}%</span>
         <span className="mx-auto">{ratioDisplay}</span>
-        <span>{100 - ratioNumber}%</span>
+        <span>{opposingRatio}%</span>
       </div>
       <RatioBar ratio={ratioNumber} targetRatio={ratio} />
     </div>
