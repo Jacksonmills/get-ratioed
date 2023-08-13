@@ -1,6 +1,6 @@
-# Get ![favicon-32x32](https://github.com/Jacksonmills/get-ratioed/assets/19780885/b044b259-f46a-4a1c-8ede-645606be2062)
-Ratioed!
-Get Ratioed! is a tool that enables users to vividly visualize the ratio when a tweet is collectively ratioed on Twitter.
+![favicon-32x32](https://github.com/Jacksonmills/get-ratioed/assets/19780885/b044b259-f46a-4a1c-8ede-645606be2062)
+# Ratioed!
+"Ratioed!" is a tool that enables users to vividly visualize the ratio when a tweet is collectively ratioed on Twitter.
 
 ## About The Project
 This Next.js project provides an engaging and interactive way for users to analyze Twitter ratios. Simply paste a tweet URL, and you will get an animated response along with a fun, downloadable playing card-like PNG to show off.
