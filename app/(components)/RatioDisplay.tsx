@@ -1,30 +1,50 @@
+'use client';
+
 import { Space_Grotesk } from 'next/font/google';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+  calculatePercentage,
+  calculateReadableRatio,
+} from '../(utils)/ratioCalculations';
+import { DURATION } from '@/lib/constants';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
-const calculateReadableRatio = (a: number, b: number): string => {
-  const percentA = (a / (a + b)) * 100;
-  const percentB = (b / (a + b)) * 100;
-
-  const gcd = (num1: number, num2: number): number => {
-    return num2 === 0 ? num1 : gcd(num2, num1 % num2);
-  };
-
-  const divisor = gcd(Math.floor(percentA), Math.floor(percentB));
-  return `${Math.floor(percentA / divisor)}:${Math.floor(percentB / divisor)}`;
-};
-
 export default function RatioDisplay({ a, b }: { a: number; b: number }) {
-  const ratio = calculateReadableRatio(a, b);
+  const [ratioCountA, ratioCountB] = useState([0, 0]);
+  const [percentage, setPercentage] = useState(0);
+
+  const ratio = calculateReadableRatio(a, b); // 16:9
+  const ratioAsPercentage = calculatePercentage(a, b); // 56
+
+  useEffect(() => {
+    if (percentage < ratioAsPercentage) {
+      setTimeout(() => {
+        setPercentage((percentage) => percentage + 1);
+      }, DURATION);
+    }
+  }, [percentage, ratioAsPercentage]);
 
   return (
-    <div
-      className={`flex mx-auto justify-center items-center gap-1 ${spaceGrotesk.className}`}
-    >
-      <span className="tabular-nums text-blue-500">{ratio.split(':')[0]}</span>
-      <span>:</span>
-      <span className="tabular-nums text-red-500">{ratio.split(':')[1]}</span>
-    </div>
+    <>
+      <span className={`tabular-nums ${spaceGrotesk.className}`}>
+        {percentage}%
+      </span>
+
+      <div
+        className={`${
+          percentage === ratioAsPercentage &&
+          'animate-ping repeat-1 opacity-100'
+        } opacity-0 flex justify-center items-center gap-1 ${
+          spaceGrotesk.className
+        }`}
+      >
+        <span className="tabular-nums text-blue-500">
+          {ratio.split(':')[0]}
+        </span>
+        <span>:</span>
+        <span className="tabular-nums text-red-500">{ratio.split(':')[1]}</span>
+      </div>
+    </>
   );
 }

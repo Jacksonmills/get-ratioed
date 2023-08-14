@@ -1,5 +1,6 @@
 'use client';
 
+import { DURATION } from '@/lib/constants';
 import { Space_Grotesk } from 'next/font/google';
 import React from 'react';
 import { Tweet } from 'react-tweet';
@@ -24,7 +25,7 @@ export default function TweetCard({
   React.useEffect(() => {
     const maxCount = tweet.favorite_count;
     const increment = Math.max(Math.floor(maxCount / 250), 1);
-    const intervalTime = 30;
+    const intervalTime = DURATION;
 
     if (count < maxCount) {
       const interval = setInterval(() => {

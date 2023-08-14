@@ -4,51 +4,49 @@ import { useEffect, useState } from 'react';
 import RatioBar from './RatioBar';
 import RatioDisplay from './RatioDisplay';
 import { Space_Grotesk } from 'next/font/google';
+import { calculatePercentage } from '../(utils)/ratioCalculations';
+import { DURATION } from '@/lib/constants';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default function Ratio({
   likesA,
   likesB,
-  ratio,
 }: {
   likesA: number;
   likesB: number;
-  ratio: number;
 }) {
   const [isAnimated, setIsAnimated] = useState(false);
-  const [ratioNumber, setRatioNumber] = useState(0);
-
-  const opposingRatio = 100 - ratioNumber <= 0 ? '0' : 100 - ratioNumber;
+  const [ratioPercentage, setRatioPercentage] = useState(0);
+  const winningPercentage = calculatePercentage(likesA, likesB);
 
   useEffect(() => {
-    if (ratio > 0 && !isAnimated) {
+    if (winningPercentage > 0 && !isAnimated) {
       setIsAnimated(true);
     }
     if (isAnimated) {
       const interval = setInterval(() => {
-        if (ratioNumber < ratio) {
-          setRatioNumber(ratioNumber + 1);
+        if (ratioPercentage < winningPercentage) {
+          setRatioPercentage(ratioPercentage + 1);
         } else {
           clearInterval(interval);
         }
-      }, 30);
+      }, DURATION);
       return () => clearInterval(interval);
     }
-  }, [isAnimated, ratio, ratioNumber]);
+  }, [isAnimated, ratioPercentage, winningPercentage]);
 
   return (
-    <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
-      <div className="font-bold text-xl md:text-4xl flex w-full">
-        {/* <span className={`tabular-nums ${spaceGrotesk.className}`}>
-          {ratioNumber}%
-        </span> */}
-        <RatioDisplay a={likesA} b={likesB} />
-        {/* <span className={`tabular-nums ${spaceGrotesk.className}`}>
-          {opposingRatio}%
-        </span> */}
+    <div className="flex flex-col items-center gap-2 w-full">
+      <p className="text-slate-600">
+        Numbers may vary due to tweet updates & rounding.
+      </p>
+      <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
+        <div className="font-bold text-xl md:text-4xl flex w-full justify-between">
+          <RatioDisplay a={likesA} b={likesB} />
+        </div>
+        <RatioBar ratio={ratioPercentage} isTweetAWinner={likesA > likesB} />
       </div>
-      <RatioBar ratio={ratioNumber} />
     </div>
   );
 }
