@@ -2,28 +2,26 @@
 
 import { Space_Grotesk } from 'next/font/google';
 import React, { useEffect, useState } from 'react';
-import {
-  calculatePercentage,
-  calculateReadableRatio,
-} from '../(utils)/ratioCalculations';
 import { DURATION } from '@/lib/constants';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
-export default function RatioDisplay({ a, b }: { a: number; b: number }) {
-  const [ratioCountA, ratioCountB] = useState([0, 0]);
-  const [percentage, setPercentage] = useState(0);
-
-  const ratio = calculateReadableRatio(a, b); // 16:9
-  const ratioAsPercentage = calculatePercentage(a, b); // 56
+export default function RatioDisplay({
+  ratio,
+  percentage,
+}: {
+  ratio: string;
+  percentage: number;
+}) {
+  const [percentageCount, setPercentageCount] = useState(0);
 
   useEffect(() => {
-    if (percentage < ratioAsPercentage) {
+    if (percentageCount < percentage) {
       setTimeout(() => {
-        setPercentage((percentage) => percentage + 1);
+        setPercentageCount((percentageCount) => percentageCount + 1);
       }, DURATION);
     }
-  }, [percentage, ratioAsPercentage]);
+  }, [percentage, percentageCount]);
 
   return (
     <>
@@ -33,8 +31,7 @@ export default function RatioDisplay({ a, b }: { a: number; b: number }) {
 
       <div
         className={`${
-          percentage === ratioAsPercentage &&
-          'animate-ping repeat-1 opacity-100'
+          percentageCount === percentage && 'animate-ping repeat-1 opacity-100'
         } opacity-0 flex justify-center items-center gap-1 ${
           spaceGrotesk.className
         }`}
