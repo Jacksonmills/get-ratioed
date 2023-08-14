@@ -44,7 +44,7 @@ export default function Ratio({
         <div className="font-bold text-4xl md:text-6xl">
           <span
             className={`tabular-nums ${spaceGrotesk.className} ${
-              ratioPercentage === winningPercentage && 'animate-ping'
+              ratioPercentage === winningPercentage && 'animate-bounce repeat-1'
             }`}
           >
             {ratioPercentage}%
