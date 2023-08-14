@@ -13,15 +13,13 @@ export default function RatioDisplay({
   ratio: string;
   percentage: number;
 }) {
-  const [percentageCount, setPercentageCount] = useState(0);
+  const [finishedAnimation, setFinishedAnimation] = useState(false);
 
   useEffect(() => {
-    if (percentageCount < percentage) {
-      setTimeout(() => {
-        setPercentageCount((percentageCount) => percentageCount + 1);
-      }, DURATION);
-    }
-  }, [percentage, percentageCount]);
+    setTimeout(() => {
+      setFinishedAnimation(true);
+    }, DURATION * 2);
+  }, []);
 
   return (
     <>
@@ -31,7 +29,7 @@ export default function RatioDisplay({
 
       <div
         className={`${
-          percentageCount === percentage && 'animate-ping repeat-1 opacity-100'
+          finishedAnimation && 'animate-ping repeat-1 opacity-100'
         } opacity-0 flex justify-center items-center gap-1 ${
           spaceGrotesk.className
         }`}
