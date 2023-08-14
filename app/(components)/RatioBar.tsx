@@ -9,12 +9,8 @@ export default function RatioBar({
   const winningPercentage = isTweetAWinner ? percentage : 100 - percentage;
   const losingPercentage = 100 - winningPercentage;
 
-  const shakeWhenFull = ratio > 100 ? 'animate-shake-all-directions' : '';
-
   return (
-    <div
-      className={`flex w-full h-2 bg-gray-500 rounded-full overflow-hidden ${shakeWhenFull} relative`}
-    >
+    <div className="flex w-full h-2 bg-gray-500 rounded-full overflow-hidden relative">
       <span
         className="flex h-2 bg-blue-500"
         style={{ width: `${winningPercentage}%` }}
