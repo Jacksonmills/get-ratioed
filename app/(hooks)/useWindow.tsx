@@ -23,7 +23,7 @@ export default function useWindow() {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []); // Dependency array is intentionally empty
+  }, [isClient]); // Dependency array is intentionally empty
 
   return { isMobile, windowWidth };
 }
