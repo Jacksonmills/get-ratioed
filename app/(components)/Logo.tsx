@@ -6,6 +6,8 @@ import useWindow from '../(hooks)/useWindow';
 export default function Logo() {
   const { isMobile } = useWindow();
 
+  if (isMobile === null) return null;
+
   return (
     <div className="flex gap-1 items-baseline">
       <div className="md:w-[1.8rem] md:h-[1.8rem] w-[1.4rem] h-[1.4rem] relative top-[-6px] md:top-[-10px]">

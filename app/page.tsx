@@ -52,7 +52,7 @@ export default async function Home() {
 
       <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center lg:flex-row">
         <TweetCard tweet={tweet} isWinner={isTweetWinner} />
-        <div className="md:dark:bg-slate-900 md:bg-slate-100 py-2 px-4 rounded-lg md:border border-slate-300 dark:border-slate-700">
+        <div className="md:bg-card py-2 px-4 rounded-lg md:border border-border">
           <div className={`font-bold text-4xl ${spaceGrotesk.className}`}>
             VS.
           </div>

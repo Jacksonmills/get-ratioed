@@ -40,9 +40,13 @@ export default function Ratio({
       <p className="text-slate-600 text-xs">
         Numbers may vary due to tweet updates & rounding.
       </p>
-      <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
+      <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-border bg-card">
         <div className="font-bold text-4xl md:text-6xl">
-          <span className={`tabular-nums ${spaceGrotesk.className}`}>
+          <span
+            className={`tabular-nums ${spaceGrotesk.className} ${
+              ratioPercentage === winningPercentage && 'animate-ping'
+            }`}
+          >
             {ratioPercentage}%
           </span>
         </div>

@@ -1,34 +1,29 @@
-'use client';
-
 import React from 'react';
 
 export default function useWindow() {
-  const [isMobile, setIsMobile] = React.useState(false);
-  const [windowWidth, setWindowWidth] = React.useState(0);
+  const isClient = typeof window === 'object';
+
+  // Initialize windowWidth state safely with a conditional check
+  const [windowWidth, setWindowWidth] = React.useState(
+    isClient ? window.innerWidth : 0
+  );
+
+  const [isMobile, setIsMobile] = React.useState<boolean | null>(null);
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWindowWidth(window.innerWidth);
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
+    if (!isClient) return; // Early return if not on client side
+
+    setIsMobile(window.innerWidth < 768);
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+      setIsMobile(window.innerWidth < 768);
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, []); // Dependency array is intentionally empty
 
   return { isMobile, windowWidth };
 }
