@@ -41,7 +41,6 @@ export default async function ReplyPage() {
     <>
       <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
         <Ratio
-          ratio={ratio}
           likesA={tweet.favorite_count}
           likesB={opposingTweet.favorite_count}
         />

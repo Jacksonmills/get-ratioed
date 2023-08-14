@@ -45,7 +45,6 @@ export default async function Home() {
     <>
       <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
         <Ratio
-          ratio={ratio}
           likesA={tweet.favorite_count}
           likesB={quotedTweet.favorite_count}
         />
