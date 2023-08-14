@@ -47,10 +47,7 @@ export default function Ratio({
       </p>
       <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 bg-slate-100">
         <div className="font-bold text-xl md:text-4xl flex w-full justify-between">
-          <RatioDisplay
-            ratio={calculatedRatio}
-            percentage={winningPercentage}
-          />
+          <RatioDisplay ratio={calculatedRatio} percentage={ratioPercentage} />
         </div>
         <RatioBar ratio={ratioPercentage} isTweetAWinner={likesA > likesB} />
       </div>
