@@ -34,7 +34,7 @@ export default function TweetCard({
             ? maxCount
             : prevCount + increment;
         });
-      }, intervalTime);
+      }, intervalTime / 2);
 
       return () => clearInterval(interval);
     }
