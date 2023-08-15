@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="relative overflow-x-hidden flex min-h-screen flex-col items-center p-6 md:p-12 gap-6 md:gap-12 lg:gap-18">
+          <div className="relative overflow-x-hidden flex min-h-screen flex-col items-center p-6 md:p-12 gap-6 md:gap-12 lg:gap-18">
             <header className="flex w-full gap-4 items-center">
               <div className="mr-auto">
                 <Link href="/">
@@ -58,7 +58,9 @@ export default function RootLayout({
               <MakeYourOwnRatio />
               <NavMenu />
             </header>
-            {children}
+            <main className="flex min-h-[80vh] flex-col items-center gap-6 md:gap-12 lg:gap-18">
+              {children}
+            </main>
             <footer className="flex w-full gap-4 items-center justify-between">
               <Link href="https://github.com/Jacksonmills" target="_blank">
                 <Button variant="outline" size="icon">
@@ -67,7 +69,7 @@ export default function RootLayout({
               </Link>
               <ThemeToggle />
             </footer>
-          </main>
+          </div>
           <Analytics />
         </ThemeProvider>
       </body>
