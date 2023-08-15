@@ -8,23 +8,17 @@ import { getBaseUrl } from '@/lib/utils';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default async function Home() {
-  const { data: tweet } = await fetch(
-    `${getBaseUrl()}/1690136127095934978`
-  ).then((res) => {
-    if (res.ok) return res.json();
-    return undefined;
-  });
+  const tweetResponse = await fetch(`${getBaseUrl()}/1690136127095934978`);
+  const { data: tweet } = await tweetResponse.json();
 
-  if (!tweet) return <div>Failed to load tweet</div>;
-
-  if (!tweet.quoted_tweet) return <div>Tweet has no quoted tweet</div>;
-
-  const { data: quotedTweet } = await fetch(
-    `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
-  ).then((res) => {
-    if (res.ok) return res.json();
-    return undefined;
-  });
+  let quotedTweetData = null;
+  if (tweet && tweet.quoted_tweet) {
+    const quotedTweetResponse = await fetch(
+      `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
+    );
+    quotedTweetData = await quotedTweetResponse.json();
+  }
+  const { data: quotedTweet } = quotedTweetData;
 
   if (!quotedTweet) return <div>Failed to load quoted tweet</div>;
 
