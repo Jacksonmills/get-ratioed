@@ -44,7 +44,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="relative overflow-x-hidden flex min-h-screen flex-col items-center p-6 md:p-12 gap-6 md:gap-12 lg:gap-18">
-            <div className="flex w-full gap-4 items-center">
+            <header className="flex w-full gap-4 items-center">
               <div className="mr-auto">
                 <Link href="/">
                   <h1
@@ -56,17 +56,17 @@ export default function RootLayout({
               </div>
 
               <MakeYourOwnRatio />
-
+              <NavMenu />
+            </header>
+            {children}
+            <footer className="flex w-full gap-4 items-center justify-between">
               <Link href="https://github.com/Jacksonmills" target="_blank">
                 <Button variant="outline" size="icon">
                   <Github className="h-[1.2rem] w-[1.2rem]" />
                 </Button>
               </Link>
               <ThemeToggle />
-
-              <NavMenu />
-            </div>
-            {children}
+            </footer>
           </main>
           <Analytics />
         </ThemeProvider>

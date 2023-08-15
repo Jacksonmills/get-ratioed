@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from './ui/navigation-menu';
 import useWindow from '../(hooks)/useWindow';
-import { Menu } from 'lucide-react';
+import { ArrowBigUp, Menu } from 'lucide-react';
 
 export function NavMenu() {
   const { isMobile } = useWindow();
