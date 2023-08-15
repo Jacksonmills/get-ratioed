@@ -10,7 +10,6 @@ export async function GET(request: Request) {
 
   try {
     const tweet = await getTweet(id);
-    console.log(tweet);
     if (!tweet) {
       return NextResponse.redirect('/404');
     }
