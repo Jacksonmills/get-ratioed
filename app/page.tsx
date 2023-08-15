@@ -9,30 +9,28 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 export default async function Home() {
   const tweet: TweetType | undefined = await getTweet(
     '1690136127095934978'
-  ).catch(() => undefined);
+  ).catch((e) => {
+    console.log(e);
+    return undefined;
+  });
 
-  if (!tweet || !tweet.quoted_tweet) return <div>Failed to load tweet</div>;
+  if (!tweet) return <div>Failed to load tweet</div>;
+
+  if (!tweet.quoted_tweet) return <div>Tweet has no quoted tweet</div>;
 
   const quotedTweet: TweetType | undefined = await getTweet(
     tweet.quoted_tweet.id_str
-  ).catch(() => undefined);
+  ).catch((e) => {
+    console.log(e);
+    return undefined;
+  });
 
   if (!quotedTweet) return <div>Failed to load quoted tweet</div>;
 
-  const ratio = calculateRatio(
-    tweet.favorite_count,
-    quotedTweet.favorite_count
-  );
   const isTweetWinner = calculateWinner(
     tweet.favorite_count,
     quotedTweet.favorite_count
   );
-
-  function calculateRatio(tweetLikeCount: number, quotedLikeCount: number) {
-    const ratio = (tweetLikeCount / quotedLikeCount) * 100;
-    const roundedRatio = Math.round(ratio * 100) / 100;
-    return roundedRatio;
-  }
 
   function calculateWinner(
     tweetLikeCount: number,

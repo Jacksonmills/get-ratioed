@@ -5,30 +5,26 @@ import TweetCard from '../(components)/TweetCard';
 export default async function ReplyPage() {
   const tweet: TweetType | undefined = await getTweet(
     '1689516653439057920'
-  ).catch(() => undefined);
+  ).catch((e) => {
+    console.log(e);
+    return undefined;
+  });
 
   if (!tweet) return <div>Failed to load tweet</div>;
 
   const opposingTweet: TweetType | undefined = await getTweet(
     '1689650267221024768'
-  ).catch(() => undefined);
+  ).catch((e) => {
+    console.log(e);
+    return undefined;
+  });
 
   if (!opposingTweet) return <div>Failed to load opposing tweet</div>;
 
-  const ratio = calculateRatio(
-    tweet.favorite_count,
-    opposingTweet.favorite_count
-  );
   const isTweetWinner = calculateWinner(
     tweet.favorite_count,
     opposingTweet.favorite_count
   );
-
-  function calculateRatio(tweetLikeCount: number, opposingLikeCount: number) {
-    const ratio = (tweetLikeCount / opposingLikeCount) * 100;
-    const roundedRatio = Math.round(ratio * 100) / 100;
-    return roundedRatio;
-  }
 
   function calculateWinner(
     tweetLikeCount: number,
