@@ -11,8 +11,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './ui/navigation-menu';
-import Link from 'next/link';
-import { MakeYourOwnRatio } from './MakeYourOwnRatio';
 
 export function NavMenu() {
   return (
