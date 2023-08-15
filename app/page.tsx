@@ -3,37 +3,24 @@ import Ratio from './(components)/Ratio';
 import TweetCard from './(components)/TweetCard';
 
 import { Space_Grotesk } from 'next/font/google';
+import { getBaseUrl } from '@/lib/utils';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default async function Home() {
-  // const tweet: TweetType | undefined = await getTweet(
-  //   '1690136127095934978'
-  // ).catch((e) => {
-  //   console.log(e);
-  //   return undefined;
-  // });
-
-  const tweet: TweetType = await fetch(`/api/1690136127095934978`).then(
-    (res) => {
-      if (res.ok) return res.json();
-      return undefined;
-    }
-  );
+  const { data: tweet } = await fetch(
+    `${getBaseUrl()}/1690136127095934978`
+  ).then((res) => {
+    if (res.ok) return res.json();
+    return undefined;
+  });
 
   if (!tweet) return <div>Failed to load tweet</div>;
 
   if (!tweet.quoted_tweet) return <div>Tweet has no quoted tweet</div>;
 
-  // const quotedTweet: TweetType | undefined = await getTweet(
-  //   tweet.quoted_tweet.id_str
-  // ).catch((e) => {
-  //   console.log(e);
-  //   return undefined;
-  // });
-
-  const quotedTweet: TweetType = await fetch(
-    `/api/${tweet.quoted_tweet.id_str}`
+  const { data: quotedTweet } = await fetch(
+    `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
   ).then((res) => {
     if (res.ok) return res.json();
     return undefined;
