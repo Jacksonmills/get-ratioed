@@ -9,6 +9,7 @@ import { Github } from 'lucide-react';
 import { ThemeToggle } from './(components)/ThemeToggle';
 import { NavMenu } from './(components)/NavMenu';
 import Logo from './(components)/Logo';
+import { MakeYourOwnRatio } from './(components)/MakeYourOwnRatio';
 
 const inter = Inter({ subsets: ['latin'] });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
@@ -55,6 +56,8 @@ export default function RootLayout({
               </div>
 
               <NavMenu />
+
+              <MakeYourOwnRatio />
 
               <Link href="https://github.com/Jacksonmills" target="_blank">
                 <Button variant="outline" size="icon">
