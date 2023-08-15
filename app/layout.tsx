@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="flex min-h-screen flex-col items-center p-6 md:p-12 gap-6 md:gap-12 lg:gap-24">
+          <main className="flex min-h-screen flex-col items-center p-6 md:p-12 gap-6 md:gap-12 lg:gap-18">
             <div className="flex w-full gap-4 items-center">
               <div className="mr-auto">
                 <Link href="/">

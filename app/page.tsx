@@ -1,10 +1,5 @@
 import { type Tweet as TweetType, getTweet } from 'react-tweet/api';
-import Ratio from './(components)/Ratio';
-import TweetCard from './(components)/TweetCard';
-
-import { Space_Grotesk } from 'next/font/google';
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
+import TweetRatio from './(components)/TweetRatio';
 
 export default async function Home() {
   const tweet: TweetType | undefined = await getTweet('1690136127095934978', {
@@ -47,27 +42,10 @@ export default async function Home() {
   }
 
   return (
-    <>
-      <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
-        <Ratio
-          likesA={tweet.favorite_count}
-          likesB={quotedTweet.favorite_count}
-        />
-      </div>
-
-      <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center lg:flex-row">
-        <TweetCard tweet={tweet} isWinner={isTweetWinner} />
-        <div className="md:bg-card py-2 px-4 rounded-lg md:border border-border">
-          <div className={`font-bold text-4xl ${spaceGrotesk.className}`}>
-            VS.
-          </div>
-        </div>
-        <TweetCard
-          tweet={quotedTweet}
-          isWinner={!isTweetWinner}
-          isOpposing={true}
-        />
-      </div>
-    </>
+    <TweetRatio
+      tweet={tweet}
+      opposingTweet={quotedTweet}
+      isTweetWinner={isTweetWinner}
+    />
   );
 }
