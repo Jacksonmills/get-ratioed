@@ -17,7 +17,9 @@ export default async function Home() {
 
   if (!tweet) return <div>Failed to load tweet</div>;
 
-  if (!tweet.quoted_tweet) return <div>Failed to load quoted tweet</div>;
+  if (!tweet.quoted_tweet) return <div>Quoted tweet not found.</div>;
+
+  if (!tweet.quoted_tweet.id_str) return <div>Quoted tweet not found.</div>;
 
   const quotedTweetResponse = await fetch(
     `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
