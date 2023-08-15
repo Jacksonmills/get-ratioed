@@ -1,14 +1,27 @@
+'use client';
+
+import { MessageSquarePlus } from 'lucide-react';
+import useWindow from '../(hooks)/useWindow';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 export function MakeYourOwnRatio() {
-  const ratio = 1.91;
+  const { isMobile } = useWindow();
+
+  if (isMobile === null) return null;
+
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Generate</Button>
+        {!isMobile ? (
+          <Button variant="outline">Generate</Button>
+        ) : (
+          <Button variant="outline" size="icon">
+            <MessageSquarePlus />
+          </Button>
+        )}
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">
