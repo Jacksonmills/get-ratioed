@@ -7,9 +7,11 @@ import { Space_Grotesk } from 'next/font/google';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export default async function Home() {
-  const tweet: TweetType | undefined = await getTweet(
-    '1690136127095934978'
-  ).catch((e) => {
+  const tweet: TweetType | undefined = await getTweet('1690136127095934978', {
+    next: {
+      revalidate: 1,
+    },
+  }).catch((e) => {
     console.log(e);
     return undefined;
   });
@@ -19,7 +21,12 @@ export default async function Home() {
   if (!tweet.quoted_tweet) return <div>Tweet has no quoted tweet</div>;
 
   const quotedTweet: TweetType | undefined = await getTweet(
-    tweet.quoted_tweet.id_str
+    tweet.quoted_tweet.id_str,
+    {
+      next: {
+        revalidate: 1,
+      },
+    }
   ).catch((e) => {
     console.log(e);
     return undefined;

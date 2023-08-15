@@ -3,9 +3,11 @@ import Ratio from '../(components)/Ratio';
 import TweetCard from '../(components)/TweetCard';
 
 export default async function ReplyPage() {
-  const tweet: TweetType | undefined = await getTweet(
-    '1689516653439057920'
-  ).catch((e) => {
+  const tweet: TweetType | undefined = await getTweet('1689516653439057920', {
+    next: {
+      revalidate: 1,
+    },
+  }).catch((e) => {
     console.log(e);
     return undefined;
   });
@@ -13,7 +15,12 @@ export default async function ReplyPage() {
   if (!tweet) return <div>Failed to load tweet</div>;
 
   const opposingTweet: TweetType | undefined = await getTweet(
-    '1689650267221024768'
+    '1689650267221024768',
+    {
+      next: {
+        revalidate: 1,
+      },
+    }
   ).catch((e) => {
     console.log(e);
     return undefined;

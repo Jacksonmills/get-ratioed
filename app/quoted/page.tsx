@@ -3,9 +3,11 @@ import Ratio from '../(components)/Ratio';
 import TweetCard from '../(components)/TweetCard';
 
 export default async function QuotedPage() {
-  const tweet: TweetType | undefined = await getTweet(
-    '1690136127095934978'
-  ).catch((e) => {
+  const tweet: TweetType | undefined = await getTweet('1690136127095934978', {
+    next: {
+      revalidate: 1,
+    },
+  }).catch((e) => {
     console.log(e);
     return undefined;
   });
@@ -15,7 +17,12 @@ export default async function QuotedPage() {
   if (!tweet.quoted_tweet) return <div>Tweet has no quoted tweet</div>;
 
   const quotedTweet: TweetType | undefined = await getTweet(
-    tweet.quoted_tweet.id_str
+    tweet.quoted_tweet.id_str,
+    {
+      next: {
+        revalidate: 1,
+      },
+    }
   ).catch((e) => {
     console.log(e);
     return undefined;
