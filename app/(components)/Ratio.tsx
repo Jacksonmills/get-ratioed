@@ -19,6 +19,8 @@ export default function Ratio({
   const [ratioPercentage, setRatioPercentage] = useState(0);
   const winningPercentage = calculatePercentage(likesA, likesB);
 
+  const animate = ratioPercentage === winningPercentage ? 'animate-ping' : '';
+
   useEffect(() => {
     if (winningPercentage > 0 && !isAnimated) {
       setIsAnimated(true);
@@ -41,12 +43,10 @@ export default function Ratio({
         Numbers may vary due to tweet updates & rounding.
       </p>
       <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-border bg-card">
-        <div className="font-bold text-4xl md:text-6xl">
-          <span
-            className={`tabular-nums ${spaceGrotesk.className} ${
-              ratioPercentage === winningPercentage && 'animate-bounce repeat-1'
-            }`}
-          >
+        <div
+          className={`font-bold text-4xl md:text-6xl ${animate} repeat-1 ease-in-out`}
+        >
+          <span className={`tabular-nums ${spaceGrotesk.className}`}>
             {ratioPercentage}%
           </span>
         </div>
