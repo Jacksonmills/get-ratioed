@@ -36,7 +36,7 @@ export function MakeYourOwnRatio() {
                 className="col-span-2 h-8"
               />
             </div>
-            <Button variant={`ratio`}>Make it!</Button>
+            <Button className="bg-white hover:bg-slate-200">Make it!</Button>
           </div>
         </div>
       </PopoverContent>
