@@ -43,7 +43,7 @@ export default function TweetCard({
   return (
     <div className="flex flex-col items-center">
       <div
-        className={`${animate} translate-y-[-25%] ease-in-out dark:bg-card bg-card py-2 px-4 rounded-lg border border-border flex items-center gap-2`}
+        className={`${animate} translate-y-[-25%] mb-[-1%] ease-in-out dark:bg-card bg-card py-2 px-4 rounded-lg border border-border flex items-center gap-2`}
       >
         ❤️{' '}
         <span
