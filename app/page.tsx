@@ -11,14 +11,12 @@ export default async function Home() {
   const tweetResponse = await fetch(`${getBaseUrl()}/1690136127095934978`);
   const { data: tweet } = await tweetResponse.json();
 
-  let quotedTweetData = null;
-  if (tweet && tweet.quoted_tweet) {
-    const quotedTweetResponse = await fetch(
-      `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
-    );
-    quotedTweetData = await quotedTweetResponse.json();
-  }
-  const { data: quotedTweet } = quotedTweetData;
+  if (!tweet && !tweet.quoted_tweet) return <div>Failed to load tweet</div>;
+
+  const quotedTweetResponse = await fetch(
+    `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
+  );
+  const { data: quotedTweet } = await quotedTweetResponse.json();
 
   if (!quotedTweet) return <div>Failed to load quoted tweet</div>;
 
