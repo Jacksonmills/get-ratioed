@@ -16,14 +16,17 @@ export function MakeYourOwnRatio() {
   const handleMakeYourOwnRatio = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const tweetId = tweetUrl.split('/').pop()?.split('?')[0];
+    const opposingTweetId = opposingTweetUrl.split('/').pop()?.split('?')[0];
+
     if (opposingTweetUrl) {
-      const nextRoute = router.push(`/ratio/${tweetUrl}-${opposingTweetUrl}`);
+      const nextRoute = router.push(`/ratio/${tweetId}-${opposingTweetId}`);
       setTweetUrl('');
       setOpposingTweetUrl('');
       return nextRoute;
     }
 
-    const nextRoute = router.push(`/ratio/${tweetUrl}`);
+    const nextRoute = router.push(`/ratio/${tweetId}`);
     setTweetUrl('');
     setOpposingTweetUrl('');
     return nextRoute;
