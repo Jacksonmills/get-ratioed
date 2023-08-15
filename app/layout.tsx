@@ -17,6 +17,20 @@ export const metadata: Metadata = {
   title: 'Ratioed!',
   description:
     '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent xQc vs. H3H3 drama.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+  openGraph: {
+    images: [{ url: '/og.png' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ratioed!',
+    description:
+      '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent xQc vs. H3H3 drama.',
+    images: [{ url: 'https://www.get-ratioed.com/og.png' }],
+    creator: '@Jacksonmills',
+  },
 };
 
 export default function RootLayout({
