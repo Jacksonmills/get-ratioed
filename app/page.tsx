@@ -15,24 +15,6 @@ export default async function Home() {
   const tweetResponse = await fetch(`${getBaseUrl()}/1690136127095934978`);
   const { data: tweet }: TweetRes = await tweetResponse.json();
 
-  if (!tweet) return <div>Failed to load tweet</div>;
-
-  if (!tweet.quoted_tweet) return <div>Quoted tweet not found.</div>;
-
-  if (!tweet.quoted_tweet.id_str) return <div>Quoted tweet not found.</div>;
-
-  const quotedTweetResponse = await fetch(
-    `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
-  );
-  const { data: quotedTweet }: TweetRes = await quotedTweetResponse.json();
-
-  if (!quotedTweet) return <div>Failed to load quoted tweet</div>;
-
-  const isTweetWinner = calculateWinner(
-    tweet.favorite_count,
-    quotedTweet.favorite_count
-  );
-
   function calculateWinner(
     tweetLikeCount: number,
     quotedLikeCount: number
@@ -40,28 +22,44 @@ export default async function Home() {
     return tweetLikeCount > quotedLikeCount;
   }
 
-  return (
-    <>
-      <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
-        <Ratio
-          likesA={tweet.favorite_count}
-          likesB={quotedTweet.favorite_count}
-        />
-      </div>
+  if (tweet && tweet.quoted_tweet) {
+    const quotedTweetResponse = await fetch(
+      `${getBaseUrl()}/${tweet.quoted_tweet.id_str}`
+    );
+    const { data: quotedTweet }: TweetRes = await quotedTweetResponse.json();
 
-      <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center lg:flex-row">
-        <TweetCard tweet={tweet} isWinner={isTweetWinner} />
-        <div className="md:bg-card py-2 px-4 rounded-lg md:border border-border">
-          <div className={`font-bold text-4xl ${spaceGrotesk.className}`}>
-            VS.
-          </div>
+    if (!quotedTweet) return <div>Failed to load quoted tweet</div>;
+
+    const isTweetWinner = calculateWinner(
+      tweet.favorite_count,
+      quotedTweet.favorite_count
+    );
+
+    return (
+      <>
+        <div className="flex w-full items-center justify-center gap-4 md:max-w-[828px]">
+          <Ratio
+            likesA={tweet.favorite_count}
+            likesB={quotedTweet.favorite_count}
+          />
         </div>
-        <TweetCard
-          tweet={quotedTweet}
-          isWinner={!isTweetWinner}
-          isOpposing={true}
-        />
-      </div>
-    </>
-  );
+
+        <div className="flex flex-col w-full gap-2 md:gap-12 items-center justify-center lg:flex-row">
+          <TweetCard tweet={tweet} isWinner={isTweetWinner} />
+          <div className="md:bg-card py-2 px-4 rounded-lg md:border border-border">
+            <div className={`font-bold text-4xl ${spaceGrotesk.className}`}>
+              VS.
+            </div>
+          </div>
+          <TweetCard
+            tweet={quotedTweet}
+            isWinner={!isTweetWinner}
+            isOpposing={true}
+          />
+        </div>
+      </>
+    );
+  }
+
+  return <div>Failed to load tweet</div>;
 }
