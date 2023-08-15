@@ -4,6 +4,7 @@ import { Label } from './ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 export function MakeYourOwnRatio() {
+  const ratio = 1.91;
   return (
     <Popover>
       <PopoverTrigger asChild>
