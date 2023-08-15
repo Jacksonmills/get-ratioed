@@ -11,7 +11,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './ui/navigation-menu';
-import Link from 'next/link';
 
 export function NavMenu() {
   return (
