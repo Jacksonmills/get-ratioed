@@ -12,11 +12,11 @@ export default function RatioBar({
   return (
     <div className="flex w-full h-2 bg-gray-500 rounded-full overflow-hidden relative">
       <span
-        className="flex h-2 bg-blue-500"
+        className="flex h-2 bg-primary"
         style={{ width: `${winningPercentage}%` }}
       />
       <span
-        className="flex h-2 bg-red-500"
+        className="flex h-2 bg-secondary"
         style={{
           width: `${losingPercentage}%`,
           direction: isTweetAWinner ? 'ltr' : 'rtl',

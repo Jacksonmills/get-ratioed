@@ -119,7 +119,7 @@ export function MakeYourOwnRatio() {
                 type="submit"
                 className="dark:bg-white dark:hover:bg-slate-200 bg-black hover:bg-slate-900"
               >
-                Get Ratioed!
+                Generate Ratio
               </Button>
             </div>
           </form>

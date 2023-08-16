@@ -1,6 +1,7 @@
 'use client';
 
 import { DURATION } from '@/lib/constants';
+import { Heart } from 'lucide-react';
 import { Space_Grotesk } from 'next/font/google';
 import React from 'react';
 import { Tweet } from 'react-tweet';
@@ -45,11 +46,11 @@ export default function TweetCard({
       <div
         className={`${animate} translate-y-[-25%] mb-[-1%] ease-in-out dark:bg-card bg-card py-2 px-4 rounded-lg border border-border flex items-center gap-2`}
       >
-        ❤️{' '}
+        <Heart className="fill-secondary stroke-secondary" />{' '}
         <span
           className={`tabular-nums transition-all duration-200 ease-in-out font-bold text-xl md:text-4xl ${
             spaceGrotesk.className
-          } ${!isOpposing ? 'text-blue-500' : 'text-red-500'}`}
+          } ${!isOpposing ? 'text-primary' : 'text-secondary'}`}
         >
           {count}
         </span>

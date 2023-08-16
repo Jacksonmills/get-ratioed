@@ -54,6 +54,7 @@ export default function Ratio({
             navigator.clipboard.writeText(window.location.href);
             toast.success('Copied link to clipboard', {
               position: 'bottom-center',
+              icon: '📋',
             });
           }}
         >
