@@ -8,7 +8,6 @@ import { DURATION } from '@/lib/constants';
 import { Link2 } from 'lucide-react';
 import { Button } from './ui/button';
 import toast from 'react-hot-toast';
-import useWindow from '../(hooks)/useWindow';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -19,7 +18,6 @@ export default function Ratio({
   likesA: number;
   likesB: number;
 }) {
-  const { isMobile } = useWindow();
   const [isAnimated, setIsAnimated] = useState(false);
   const [ratioPercentage, setRatioPercentage] = useState(0);
   const winningPercentage = calculatePercentage(likesA, likesB);
