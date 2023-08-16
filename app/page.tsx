@@ -1,5 +1,6 @@
 import { type Tweet as TweetType, getTweet } from 'react-tweet/api';
 import TweetRatio from './(components)/TweetRatio';
+import { calculateWinner } from '@/lib/utils';
 
 export default async function Home() {
   const tweet: TweetType | undefined = await getTweet('1690136127095934978', {
@@ -33,13 +34,6 @@ export default async function Home() {
     tweet.favorite_count,
     quotedTweet.favorite_count
   );
-
-  function calculateWinner(
-    tweetLikeCount: number,
-    quotedLikeCount: number
-  ): boolean {
-    return tweetLikeCount > quotedLikeCount;
-  }
 
   return (
     <TweetRatio
