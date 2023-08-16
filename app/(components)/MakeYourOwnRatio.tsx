@@ -1,6 +1,6 @@
 'use client';
 
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -12,9 +12,14 @@ export function MakeYourOwnRatio() {
 
   const [tweetUrl, setTweetUrl] = useState('');
   const [opposingTweetUrl, setOpposingTweetUrl] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleMakeYourOwnRatio = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsOpen(false);
 
     const tweetId = tweetUrl.split('/').pop()?.split('?')[0];
     const opposingTweetId = opposingTweetUrl.split('/').pop()?.split('?')[0];
@@ -33,19 +38,44 @@ export function MakeYourOwnRatio() {
   };
 
   useEffect(() => {
-    console.log({
-      tweetUrl,
-      opposingTweetUrl,
-    });
-  }, [tweetUrl, opposingTweetUrl]);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(e.target as Node) &&
+        e.target !== buttonRef.current
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleESC = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleESC);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleESC);
+    };
+  }, []);
 
   return (
-    <Popover>
+    <Popover open={isOpen}>
       <PopoverTrigger asChild>
-        <Button className="bg-white hover:bg-slate-200">Generate</Button>
+        <Button
+          ref={buttonRef}
+          className="dark:bg-white dark:hover:bg-slate-200 bg-black hover:bg-slate-900"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? 'Close' : 'Generate'}
+        </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
-        <div className="grid gap-4">
+        <div className="grid gap-4" ref={popoverRef}>
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Generate</h4>
             <p className="text-sm text-muted-foreground">
@@ -76,7 +106,10 @@ export function MakeYourOwnRatio() {
                 />
               </div>
               <div className="h-2" />
-              <Button type="submit" className="bg-white hover:bg-slate-200">
+              <Button
+                type="submit"
+                className="dark:bg-white dark:hover:bg-slate-200 bg-black hover:bg-slate-900"
+              >
                 Get Ratioed!
               </Button>
             </div>
