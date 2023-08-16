@@ -14,7 +14,7 @@ export default function TweetRatio({
 }) {
   return (
     <>
-      <div className="flex w-full items-center justify-center gap-4 md:max-w-[444px] lg:max-w-[828px]">
+      <div className="flex w-full items-center justify-center gap-4 sm:max-w-[444px] lg:max-w-[828px]">
         <Ratio
           likesA={tweet.favorite_count}
           likesB={opposingTweet.favorite_count}

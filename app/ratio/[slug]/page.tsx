@@ -1,3 +1,4 @@
+import ErrorText from '@/app/(components)/ErrorText';
 import TweetRatio from '@/app/(components)/TweetRatio';
 import { calculateWinner } from '@/lib/utils';
 import { Tweet, getTweet } from 'react-tweet/api';
@@ -15,10 +16,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return undefined;
   });
 
-  if (!tweet) return <div>Failed to load tweet</div>;
+  if (!tweet) return <ErrorText>Failed to load tweet</ErrorText>;
 
   if (!opposingTweetId) {
-    if (!tweet.quoted_tweet) return <div>Failed to load tweet</div>;
+    if (!tweet.quoted_tweet) {
+      return <ErrorText>Tweet has no quoted tweet</ErrorText>;
+    }
 
     const opposingTweet = await getTweet(tweet.quoted_tweet.id_str, {
       next: {
@@ -29,7 +32,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
       return undefined;
     });
 
-    if (!opposingTweet) return <div>Failed to load tweet</div>;
+    if (!opposingTweet)
+      return <ErrorText>Failed to load quoted tweet</ErrorText>;
 
     const isTweetWinner = calculateWinner(
       tweet.favorite_count,
@@ -54,7 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return undefined;
   });
 
-  if (!opposingTweet) return <div>Failed to load tweet</div>;
+  if (!opposingTweet) return <ErrorText>Failed to load reply tweet</ErrorText>;
 
   const isTweetWinner = calculateWinner(
     tweet.favorite_count,

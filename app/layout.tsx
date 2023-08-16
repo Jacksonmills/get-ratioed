@@ -10,6 +10,7 @@ import { ThemeToggle } from './(components)/ThemeToggle';
 import { NavMenu } from './(components)/NavMenu';
 import Logo from './(components)/Logo';
 import { MakeYourOwnRatio } from './(components)/MakeYourOwnRatio';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
@@ -72,6 +73,7 @@ export default function RootLayout({
             </footer>
           </div>
           <Analytics />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

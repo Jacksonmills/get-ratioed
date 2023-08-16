@@ -13,9 +13,14 @@ export default function LogoSVG() {
           className="fill-[#2a66ff]"
           d="M186.8,124.52c-14.65,49.83-66.93,78.35-116.76,63.7C20.2,173.57-8.31,121.3,6.34,71.46"
         />
-        <circle className="fill-[#071722]" cx="96.56" cy="98" r="23.27" />
         <circle
-          className="fill-none stroke-[#071722]"
+          className="dark:fill-[#071722] fill-white"
+          cx="96.56"
+          cy="98"
+          r="23.27"
+        />
+        <circle
+          className="fill-none dark:stroke-[#071722] stroke-white"
           strokeMiterlimit="10"
           strokeWidth="7"
           cx="97"

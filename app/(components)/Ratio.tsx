@@ -5,6 +5,10 @@ import RatioBar from './RatioBar';
 import { Space_Grotesk } from 'next/font/google';
 import { calculatePercentage } from '../(utils)/ratioCalculations';
 import { DURATION } from '@/lib/constants';
+import { Link2 } from 'lucide-react';
+import { Button } from './ui/button';
+import toast from 'react-hot-toast';
+import useWindow from '../(hooks)/useWindow';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -15,6 +19,7 @@ export default function Ratio({
   likesA: number;
   likesB: number;
 }) {
+  const { isMobile } = useWindow();
   const [isAnimated, setIsAnimated] = useState(false);
   const [ratioPercentage, setRatioPercentage] = useState(0);
   const winningPercentage = calculatePercentage(likesA, likesB);
@@ -38,10 +43,24 @@ export default function Ratio({
   }, [isAnimated, ratioPercentage, winningPercentage]);
 
   return (
-    <div className="flex flex-col items-center gap-2 w-full">
-      <p className="text-slate-600 text-xs">
-        Numbers may vary due to tweet updates & rounding.
-      </p>
+    <div className="flex flex-col items-center gap-1 w-full">
+      <div className="flex items-center justify-between w-full">
+        <p className="text-slate-600 text-xs">Results may vary</p>
+        <Button
+          variant={`ghost`}
+          {...(isMobile && { size: 'icon' })}
+          className="flex items-center gap-2 font-bold"
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+            toast.success('Copied link to clipboard', {
+              position: 'bottom-center',
+            });
+          }}
+        >
+          <Link2 size={24} className="-rotate-45" />
+          {!isMobile && 'Copy link to ratio'}
+        </Button>
+      </div>
       <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-border bg-card">
         <div
           className={`font-bold text-4xl md:text-6xl ${animate} repeat-1 ease-in-out`}

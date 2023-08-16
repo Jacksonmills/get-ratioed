@@ -16,9 +16,17 @@ export function MakeYourOwnRatio() {
 
   const popoverRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const tweetUrlRef = useRef<HTMLInputElement>(null);
 
   const handleMakeYourOwnRatio = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (tweetUrl === '' || opposingTweetUrl === '') {
+      if (tweetUrlRef.current && tweetUrlRef.current.value === '') {
+        return tweetUrlRef.current.focus();
+      }
+    }
+
     setIsOpen(false);
 
     const tweetId = tweetUrl.split('/').pop()?.split('?')[0];
@@ -88,6 +96,7 @@ export function MakeYourOwnRatio() {
               <div className="grid grid-cols-3 items-center gap-4">
                 <Label htmlFor="width">Tweet</Label>
                 <Input
+                  ref={tweetUrlRef}
                   value={tweetUrl}
                   onChange={(e) => setTweetUrl(e.target.value)}
                   id="width"
