@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from './(components)/ThemeProvider';
 import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
@@ -13,7 +13,6 @@ import { MakeYourOwnRatio } from './(components)/MakeYourOwnRatio';
 import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Ratioed!',
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
     images: [{ url: '/og.png' }],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Ratioed!',
     description:
       '"Ratioed!" A Visualizer for Twitter Ratio\'s. Notably the recent xQc vs. H3H3 drama.',
