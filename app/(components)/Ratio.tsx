@@ -48,7 +48,6 @@ export default function Ratio({
         <p className="text-slate-600 text-xs">Results may vary</p>
         <Button
           variant={`ghost`}
-          {...(isMobile && { size: 'icon' })}
           className="flex items-center gap-2 font-bold"
           onClick={() => {
             navigator.clipboard.writeText(window.location.href);
@@ -59,7 +58,7 @@ export default function Ratio({
           }}
         >
           <Link2 size={24} className="-rotate-45" />
-          {!isMobile && 'Copy link to ratio'}
+          Copy link
         </Button>
       </div>
       <div className="text-xl font-bold w-full flex items-center flex-col gap-2 border p-4 rounded-xl border-border bg-card">

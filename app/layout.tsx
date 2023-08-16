@@ -5,12 +5,18 @@ import { ThemeProvider } from './(components)/ThemeProvider';
 import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
 import { Button } from './(components)/ui/button';
-import { Github, Twitter } from 'lucide-react';
+import { Bug, Github, Twitter } from 'lucide-react';
 import { ThemeToggle } from './(components)/ThemeToggle';
 import { NavMenu } from './(components)/NavMenu';
 import Logo from './(components)/Logo';
 import { MakeYourOwnRatio } from './(components)/MakeYourOwnRatio';
 import { Toaster } from 'react-hot-toast';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './(components)/ui/tooltip';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -58,15 +64,47 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="flex w-full gap-4 items-center justify-center">
-              <Link href="https://twitter.com/Jacksonmills" target="_blank">
-                <Button variant="outline" size="icon">
-                  <Twitter className="h-[1.2rem] w-[1.2rem]" />
-                </Button>
+              <Link href="https://twitter.com/getratioedapp" target="_blank">
+                <TooltipProvider>
+                  <Tooltip delayDuration={100}>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <Twitter className="h-[1.2rem] w-[1.2rem]" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Follow on Twitter</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </Link>
               <Link href="https://github.com/Jacksonmills" target="_blank">
-                <Button variant="outline" size="icon">
-                  <Github className="h-[1.2rem] w-[1.2rem]" />
-                </Button>
+                <TooltipProvider>
+                  <Tooltip delayDuration={100}>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <Github className="h-[1.2rem] w-[1.2rem]" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Follow on GitHub</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </Link>
+              <Link href="https://twitter.com/Jacksonmills" target="_blank">
+                <TooltipProvider>
+                  <Tooltip delayDuration={100}>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <Bug className="h-[1.2rem] w-[1.2rem]" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Report a bug</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </Link>
               <ThemeToggle />
             </footer>
