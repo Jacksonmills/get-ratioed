@@ -5,7 +5,7 @@ import { ThemeProvider } from './(components)/ThemeProvider';
 import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
 import { Button } from './(components)/ui/button';
-import { Github } from 'lucide-react';
+import { Github, Twitter } from 'lucide-react';
 import { ThemeToggle } from './(components)/ThemeToggle';
 import { NavMenu } from './(components)/NavMenu';
 import Logo from './(components)/Logo';
@@ -47,11 +47,7 @@ export default function RootLayout({
             <header className="flex w-full gap-4 items-center">
               <div className="mr-auto">
                 <Link href="/">
-                  <h1
-                    className={`font-black text-xl md:text-4xl ${spaceGrotesk.className}`}
-                  >
-                    <Logo />
-                  </h1>
+                  <Logo />
                 </Link>
               </div>
 
@@ -61,7 +57,12 @@ export default function RootLayout({
             <main className="flex min-h-[80vh] flex-col items-center gap-6 md:gap-12 lg:gap-18">
               {children}
             </main>
-            <footer className="flex w-full gap-4 items-center justify-between">
+            <footer className="flex w-full gap-4 items-center justify-center">
+              <Link href="https://twitter.com/Jacksonmills" target="_blank">
+                <Button variant="outline" size="icon">
+                  <Twitter className="h-[1.2rem] w-[1.2rem]" />
+                </Button>
+              </Link>
               <Link href="https://github.com/Jacksonmills" target="_blank">
                 <Button variant="outline" size="icon">
                   <Github className="h-[1.2rem] w-[1.2rem]" />

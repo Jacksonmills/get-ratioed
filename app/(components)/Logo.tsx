@@ -10,9 +10,9 @@ export default function Logo() {
   if (isMobile === null) return null;
 
   return (
-    <div className="flex gap-1 items-center">
+    <h1 className="flex gap-2 items-center font-bold text-xl md:text-4xl">
       <LogoSVG />
-      {!isMobile && <span className="uppercase">Ratioed!</span>}
-    </div>
+      {!isMobile && <span className="">Ratioed!</span>}
+    </h1>
   );
 }
