@@ -5,9 +5,14 @@ import useWindow from '../(hooks)/useWindow';
 import LogoSVG from './LogoSVG';
 
 export default function Logo() {
-  const { isMobile } = useWindow();
+  const { isMobile, isLoading } = useWindow();
 
-  if (isMobile === null) return null;
+  if (isLoading)
+    return (
+      <h1 className="flex gap-2 items-center font-bold text-xl md:text-4xl animate-spin">
+        <LogoSVG />
+      </h1>
+    );
 
   return (
     <h1 className="flex gap-2 items-center font-bold text-xl md:text-4xl">
