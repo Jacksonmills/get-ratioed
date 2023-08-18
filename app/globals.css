@@ -11,6 +11,43 @@
     @apply bg-background text-foreground;
   }
 
+  .emojiExplode {
+    display: block;
+    animation: xAxis 5s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+
+    &::after {
+      content: '💥';
+      display: block;
+      animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    }
+
+    @keyframes yAxis {
+      0% {
+        animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+        top: 0;
+      }
+
+      100% {
+        animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+        top: 100px;
+      }
+    }
+
+    @keyframes xAxis {
+      0% {
+        animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+        right: 0;
+        /* opacity: 1; */
+      }
+
+      100% {
+        animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+        right: -100%;
+        /* opacity: 0; */
+      }
+    }
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 204 66% 8%;
