@@ -55,7 +55,7 @@ export default function TweetCard({
           {count}
         </span>
       </div>
-      <div className="mb-[-24px] mt-[-12px] md:mt-none">
+      <div className="mb-[-24px] mt-[-12px] md:mt-none min-w-[318px]">
         <Tweet id={tweet.id_str} />
       </div>
     </div>

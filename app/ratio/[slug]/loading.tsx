@@ -1,12 +1,6 @@
-import LogoSVG from '@/app/(components)/LogoSVG';
+import TweetCardSkeleton from '@/app/(components)/TweetCardSkeleton';
 import React from 'react';
 
-export default function loading() {
-  return (
-    <div className="w-screen h-screen grid place-content-center">
-      <div className="animate-spin scale-150">
-        <LogoSVG />
-      </div>
-    </div>
-  );
+export default function Loading() {
+  return <TweetCardSkeleton />;
 }
