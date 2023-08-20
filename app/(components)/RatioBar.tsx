@@ -120,7 +120,7 @@ function EmojiSplode({
   isTweetAWinner: boolean;
   direction?: 'top' | 'middle' | 'bottom';
 }) {
-  const randomDelay = ['300', '500', '700', '1000'];
+  const randomDelay = ['150', '200', '300', '500'];
   const randomIndex = Math.floor(Math.random() * randomDelay.length);
   let transformString = '';
 
@@ -132,13 +132,13 @@ function EmojiSplode({
       break;
     case 'middle':
       transformString = isTweetAWinner
-        ? 'translate-y-none translate-x-full -rotate-360'
-        : 'translate-y-none -translate-x-full rotate-360';
+        ? 'translate-y-none translate-x-full -rotate-90'
+        : 'translate-y-none -translate-x-full rotate-90';
       break;
     case 'bottom':
       transformString = isTweetAWinner
-        ? 'translate-y-1/2 translate-x-1/2 -rotate-45'
-        : 'translate-y-1/2 -translate-x-1/2 rotate-45';
+        ? 'translate-y-full translate-x-1/2 -rotate-45'
+        : 'translate-y-full -translate-x-1/2 rotate-45';
       break;
   }
 
@@ -151,9 +151,7 @@ function EmojiSplode({
       }`}
     >
       <span
-        className={`absolute rotate-0 transition-all delay-200 duration-${
-          randomDelay[randomIndex]
-        } ease-out top-[-0.5em] left-0 ${
+        className={`absolute rotate-0 transition-all delay-75 duration-150 ease-out top-[-0.5em] left-0 ${
           winningPercentage === targetPercentage
             ? `opacity-100 scale-150 ${transformString}`
             : 'opacity-0 scale-0'
