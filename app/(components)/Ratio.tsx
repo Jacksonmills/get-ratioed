@@ -50,8 +50,7 @@ export default function Ratio({
           onClick={() => {
             navigator.clipboard.writeText(window.location.href);
             toast.success('Copied link to clipboard', {
-              position: 'bottom-center',
-              icon: '📋',
+              icon: '🔗',
             });
           }}
         >
