@@ -66,7 +66,11 @@ export default function Ratio({
             {ratioPercentage}%
           </span>
         </div>
-        <RatioBar ratio={ratioPercentage} isTweetAWinner={likesA > likesB} />
+        <RatioBar
+          ratio={ratioPercentage}
+          targetPercentage={winningPercentage}
+          isTweetAWinner={likesA > likesB}
+        />
       </div>
     </div>
   );
