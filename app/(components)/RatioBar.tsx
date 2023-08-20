@@ -89,8 +89,8 @@ function EmojiSplode({
       break;
     case 'bottom':
       transformString = isTweetAWinner
-        ? 'translate-y-full translate-x-1/2 -rotate-45'
-        : 'translate-y-full -translate-x-1/2 rotate-45';
+        ? 'translate-y-1/2 translate-x-1/2 -rotate-45'
+        : 'translate-y-1/2 -translate-x-1/2 rotate-45';
       break;
   }
 
@@ -103,7 +103,9 @@ function EmojiSplode({
       }`}
     >
       <span
-        className={`absolute rotate-0 transition-all duration-200 delay-200 ease-out top-[-0.5em] left-0 ${
+        className={`absolute rotate-0 transition-all duration-${
+          randomDelay[randomIndex]
+        } ease-out top-[-0.5em] left-0 ${
           winningPercentage === targetPercentage
             ? `opacity-100 scale-150 ${transformString}`
             : 'opacity-0 scale-0'
@@ -116,10 +118,10 @@ function EmojiSplode({
         }}
       >
         <span
-          className={`block transition-opacity ${
-            winningPercentage === targetPercentage
-              ? 'opacity-0 delay-500 duration-500 ease-out'
-              : 'opacity-100'
+          className={`block transition-opacity ease-out duration-1000 delay-${
+            randomDelay[randomIndex]
+          } ${
+            winningPercentage === targetPercentage ? 'opacity-0' : 'opacity-100'
           }`}
         >
           {emoji}
