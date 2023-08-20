@@ -1,3 +1,45 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+function getThreeRandomEmojis() {
+  const ratioReactions = [
+    '🍿',
+    '🎣',
+    '🚂',
+    '🤡',
+    '🍅',
+    '🤯',
+    '🎤',
+    '🤭',
+    '🥴',
+    '💀',
+    '🍵',
+    '🎪',
+    '🌋',
+    '🍔',
+    '🤖',
+    '🎉',
+    '📉',
+    '👀',
+    '🎈',
+    '🕶️',
+    '🤬',
+    '🔥',
+    '👏',
+    '💥',
+    '😭',
+    '🤯',
+    '🤔',
+    '🤫',
+    '🤐',
+    '🤨',
+  ];
+
+  const shuffled = ratioReactions.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, 3);
+}
+
 export default function RatioBar({
   ratio,
   isTweetAWinner,
@@ -7,9 +49,15 @@ export default function RatioBar({
   isTweetAWinner: boolean;
   targetPercentage: number;
 }) {
+  const [emojis, setEmojis] = useState(['🤬', '🔥', '👀']);
+
   const percentage = ratio > 100 ? 100 : ratio;
   const winningPercentage = isTweetAWinner ? percentage : 100 - percentage;
   const losingPercentage = 100 - winningPercentage;
+
+  useEffect(() => {
+    setEmojis(getThreeRandomEmojis());
+  }, []);
 
   return (
     <div className="relative w-full">
@@ -29,7 +77,7 @@ export default function RatioBar({
       </div>
 
       <EmojiSplode
-        emoji={`🤬`}
+        emoji={emojis[0]}
         winningPercentage={
           isTweetAWinner ? winningPercentage : losingPercentage
         }
@@ -38,7 +86,7 @@ export default function RatioBar({
         direction="top"
       />
       <EmojiSplode
-        emoji={`🔥`}
+        emoji={emojis[1]}
         winningPercentage={
           isTweetAWinner ? winningPercentage : losingPercentage
         }
@@ -47,7 +95,7 @@ export default function RatioBar({
         direction="middle"
       />
       <EmojiSplode
-        emoji={`👀`}
+        emoji={emojis[2]}
         winningPercentage={
           isTweetAWinner ? winningPercentage : losingPercentage
         }
@@ -103,7 +151,7 @@ function EmojiSplode({
       }`}
     >
       <span
-        className={`absolute rotate-0 transition-all duration-${
+        className={`absolute rotate-0 transition-all delay-200 duration-${
           randomDelay[randomIndex]
         } ease-out top-[-0.5em] left-0 ${
           winningPercentage === targetPercentage
